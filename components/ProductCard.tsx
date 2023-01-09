@@ -25,7 +25,7 @@ const ProductCard: NextPage<IProps> = ({ list }) => {
           </Link>
           <div className='flex-1 text-center'>
           <Link href={`/`}>
-              <p className='mt-[2px] w-full flex text-left font-bold text-md '>{list.productName}</p>
+              <p className='mt-[2px] w-full flex text-left font-semibold text-[16px] '>{list.productName}</p>
             </Link>
             <p className='-mt-[2px] w-full text-right  font-thin text-[10px]'>{list.price}</p>
             </div>
