@@ -6,12 +6,15 @@ import axios from 'axios'
 import { Product } from '../types'
 import ProductCard from '../components/ProductCard'
 import NoResults from '../components/NoResults'
+import { BASE_URL } from '../../utils'
 
 interface IProps {
   products: Product[]
 }
 
-// const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  variable: '--inter-font', display: 'swap', subsets: ['latin'],
+})
 
  const Home = ( { products }: IProps ) => {
   return (
@@ -22,8 +25,10 @@ interface IProps {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+     
       <main className={styles.main}>
-        <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 lg:gap-1 pr-2 videos h-full'>
+        <div className={inter.variable}>
+        <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 lg:gap-1 pr-4 videos h-full'>
         {products.length ? (
           products.map((product: Product) => (
             <ProductCard list={product} key={product._id} />
@@ -33,14 +38,16 @@ interface IProps {
         )
         }
       </div>
+      </div>
       </main>
+     
     </>
   )
 }
 
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`https://e-cedar.vercel.app/api/products`);
+  const { data } = await axios.get(`${BASE_URL}/api/products/`);
 
   
 
