@@ -86,10 +86,10 @@ const Header = () => {
                 }}
               >
                 <Link href='/cart/mena'>
-                <AiOutlineLogout color='red' fontSize={21} />
+                <AiOutlineLogout color='red' fontSize={18} />
                 </Link>
               </button>
-              <div className='py-2 rounded-full cursor-pointer outline-none'> <BsCartDashFill className='w-6 h-6' /> </div>
+              <div className='py-2 rounded-full cursor-pointer outline-none'> <BsCartDashFill className='w-[18px] h-[18px]' /> </div>
           </div>
           
         ) : (

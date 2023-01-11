@@ -36,7 +36,7 @@ const inter = Inter({
           <div className='mt-4 flex flex-col gap-6 overflow-auto h-[88vh] videos flex-1'>
       <main className={styles.main}>
         <div className={inter.variable}>
-        <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 lg:gap-1 pr-4 videos h-full'>
+        <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-3 lg:gap-1 videos h-full'>
         {products.length ? (
           products.map((product: Product) => (
             <ProductCard list={product} key={product._id} />
