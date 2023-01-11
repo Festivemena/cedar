@@ -4,16 +4,18 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import { Product } from '../types'
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
 import ProductCard from '../components/ProductCard'
 import NoResults from '../components/NoResults'
-import { BASE_URL } from '../../utils'
+import { BASE_URL } from '../utils'
 
 interface IProps {
   products: Product[]
 }
 
 const inter = Inter({
-  variable: '--inter-font', display: 'swap', subsets: ['latin'],
+  variable: '--inter-font',
 })
 
  const Home = ( { products }: IProps ) => {
@@ -25,7 +27,13 @@ const inter = Inter({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     
+      <div className='xl:w-[1200px]  overflow-hidden h-[100vh]'>
+        <Header />
+        <div className='flex gap-6 md:gap-2 '>
+          <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
+            <Sidebar />
+          </div>
+          <div className='mt-4 flex flex-col gap-6 overflow-auto h-[88vh] videos flex-1'>
       <main className={styles.main}>
         <div className={inter.variable}>
         <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-4 lg:gap-1 pr-4 videos h-full'>
@@ -40,14 +48,16 @@ const inter = Inter({
       </div>
       </div>
       </main>
-     
+      </div>
+        </div>
+      </div>
     </>
   )
 }
 
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`${BASE_URL}/api/products/`);
+  const { data } = await axios.get(`${BASE_URL}/api/products`);
 
   
 
