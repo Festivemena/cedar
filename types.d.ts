@@ -8,7 +8,6 @@ export interface Product {
   };
   _id: string;
   productName: string;
-  productDetails: string;
   price: string;
 }
 

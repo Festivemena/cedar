@@ -14,8 +14,8 @@ import { IUser } from '../types';
 import useAuthStore from '../store/authStore';
 
 const Header = () => {
-  const { addUser, userProfile}: any = useAuthStore;
-  const user = 'Efemena'
+  // const { addUser, userProfile } = useAuthStore;
+  const [user, setUser] = useState<IUser | null>();
   const [searchValue, setSearchValue] = useState('');
   const router = useRouter();  
 
@@ -64,37 +64,30 @@ const Header = () => {
                 <span className='hidden md:block'>Upload </span>
               </button>
             </Link> */}
-            {/* {user.image && (
+            {user.image && (
               <Link href={`/`}>
                 <div>
-                <Image
-                    className='rounded-full cursor-pointer'
-                    src={user.image}
-                    alt='user'
-                    width={40}
-                    height={40}
-                  />
+                  
                 </div>
               </Link>
-            )} */}
-            {/* <div>{user}</div> */}
+            )}
               <button
                 type='button'
                 className=' border-2 p-2 rounded-full cursor-pointer outline-none shadow-md'
                 onClick={() => {
-                  googleLogout();
+                  
                 }}
               >
-                <Link href='/cart/mena'>
-                <AiOutlineLogout color='red' fontSize={21} />
-                </Link>
+                <div className='truncate'>Efemena</div>
+                
               </button>
               <div className='py-2 rounded-full cursor-pointer outline-none'> <BsCartDashFill className='w-6 h-6' /> </div>
           </div>
           
         ) : (
+            // <AiOutlineLogout color='red' fontSize={21} />
             <GoogleLogin 
-            onSuccess={(response) => createOrGetUser(response, addUser)}
+            onSuccess={(response) => createOrGetUser(response)}
             onError={() => console.log("Error")}
             />
         )}
