@@ -3,12 +3,25 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
-import { Product } from '../types'
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import ProductCard from '../components/ProductCard'
 import NoResults from '../components/NoResults'
 import { BASE_URL } from '../utils'
+
+interface Product {
+  category: string;
+  productImage: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+  };
+  _id: string;
+  productName: string;
+  productDetails: string;
+  price: string;
+}
 
 interface IProps {
   products: Product[]
