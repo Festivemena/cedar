@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const inter = Inter({
-  variable: '--inter-font',
+  variable: '--inter-font', display: 'swap', subsets: ['latin'],
 })
 
  const Home = ( { products }: IProps ) => {
@@ -29,11 +29,11 @@ const inter = Inter({
       </Head>
       <div className='xl:w-[1200px]  overflow-hidden h-[100vh]'>
         <Header />
-        <div className='flex gap-6 md:gap-2 '>
+        <div className='flex gap-0 md:gap-2 '>
           <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
             <Sidebar />
           </div>
-          <div className='mt-4 flex flex-col gap-6 overflow-auto h-[88vh] videos flex-1'>
+          <div className='mt-4 flex flex-col gap-0 overflow-hidden hover:overflow-auto h-[88vh] videos flex-1'>
       <main className={styles.main}>
         <div className={inter.variable}>
         <div className='grid grid-cols-2 md:grid-cols-3 w-full gap-3 lg:gap-1 videos h-full'>

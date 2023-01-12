@@ -15,14 +15,16 @@ interface IProps {
   productDetails: Product[]
 }
 
-const Detail = ( { productDetails }: IProps ) => {
+const Detail = (
+   { productDetails }: IProps
+    ) => {
   const [product, setProduct] = useState(productDetails);
   // const [isPlaying, setIsPlaying] = useState<boolean>(false);
   // const [isVideoMuted, ] = useState<boolean>(false);
   // const [isPostingComment, setIsPostingComment] = useState<boolean>(false);
   // const [comment, setComment] = useState<string>('');
 
-console.log(productDetails);
+  console.log(productDetails)
   const router = useRouter();
 
 
@@ -63,7 +65,7 @@ console.log(productDetails);
                   <div>
                     <div className='text-xl font-bold lowercase tracking-wider flex gap-2 items-center justify-center'>
                       {/* {post.postedBy.userName.replace(/\s+/g, '')}{' '} */}
-                      Product Name
+                     Product Name
                       {/* <GoVerified className='text-blue-400 text-xl' /> */}
                     </div>
                     <p className='text-md'>Product Price</p>
@@ -82,15 +84,19 @@ console.log(productDetails);
   );
 };
 
-export const getServerSideprops = async ({
+export const getServerSideprops = async (
+  {
   params: { id },
 }: {
   params: { id: string };
-}) => {
-  const res = await axios.get(`${BASE_URL}/api/products/${id}`);
-
+}
+) => {
+  const { data } = await axios.get(`${BASE_URL}/api/products/${id}`);
+  
   return {
-    props: { productDetails: res.data },
+    props: { 
+      productDetails: data
+    },
   };
 };
 
